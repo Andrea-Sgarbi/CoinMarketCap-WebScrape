@@ -25,7 +25,7 @@ def csv_to_list(csv_path):
     result = []
     with open(csv_path, mode='r', newline='') as csv_file:
         reader = csv.reader(csv_file, delimiter=';')
-        next(reader)  # Salta l'intestazione
+        next(reader)  # Skip header
         for row in reader:
             if len(row) >= 2:
                 result.append([row[0], row[1], row[2]])
@@ -40,7 +40,7 @@ def url_object(coin_list):
     return data
 
 
-# Funzione per estrarre i dati dalla pagina
+# Function to extract data from the page
 def url_data(url):
 
     options = ChromeOptions()
@@ -65,57 +65,57 @@ def url_data(url):
     return price
 
 
-# Funzione per scrivere i dati sul CSV
+# Function to write data to the CSV
 def csv_append(csv, info):
     try:
         locale.setlocale(locale.LC_ALL, 'it_IT.UTF-8')
     except locale.Error:
         print("Warning: 'it_IT.UTF-8' locale is not available. Falling back to the default locale.")
         locale.setlocale(locale.LC_ALL, '')
-    # Sanitizza l'input
+    # Sanitize input
     sanitized_price = info[3].replace('€', '')
     sanitized_price = sanitized_price.replace('.', '')
-    # Converte in float
+    # Convert to float
     price_float = locale.atof(sanitized_price)
-    # Format a 8 decimali e sostituisci il punto con la virgola
+    # Format to 8 decimal places and replace dot with comma
     price_str = f"{price_float:.8f}".replace('.', ',')
     print(info[1] + ': ' + price_str)
-    # Scrivi sul CSV usando la stringa con virgola
+    # Write to CSV using the comma-separated string
     csv.writerow([info[0], info[1], info[2], price_str])
     return 0
 
 
-# Funzione principale
+# Main function
 if __name__ == '__main__':
-    # Percorso del file CSV da leggere
+    # Path to the CSV file to read
     csv_path = 'CryptoValue.csv'
     csv_data = csv_to_list(csv_path)
 
-    # Creazione degli oggetti URL con i seguenti elementi:
-    # 0. URL a cui collegarsi
-    # 1. Classe del div contenente il prezzo
-    # 2. Simbolo criptovaluta
-    # 3. Nome criptovaluta
-    # 4. ID criptovaluta
+    # Create URL objects with the following elements:
+    # 0. URL to connect to
+    # 1. Class of the div containing the price
+    # 2. Cryptocurrency symbol
+    # 3. Cryptocurrency name
+    # 4. Cryptocurrency ID
     crypto_objects = url_object(csv_data)
 
-    # Estrazione dei dati per la scrittura su CSV
-    # 0. Simbolo criptovaluta
-    # 1. Nome criptovaluta
-    # 2. ID criptovaluta
-    # 3. Prezzo
+    # Extract data for writing to CSV
+    # 0. Cryptocurrency symbol
+    # 1. Cryptocurrency name
+    # 2. Cryptocurrency ID
+    # 3. Price
     csv_write_data = []
-    print("Inizio estrazione dati...")
+    print("Start of data extraction...")
     for crypto in crypto_objects:
         price = url_data(crypto)
         csv_write_data.append([crypto[2], crypto[3], crypto[4], price])
 
-    if len(csv_data) != len(csv_write_data):  # Sostituisci con la tua condizione di errore
-        print("Elementi mancanti per la scrittura su CSV!")
+    if len(csv_data) != len(csv_write_data):  # Replace with your error condition
+        print("Missing elements for writing to CSV!")
         sys.exit(1)
 
-    # Percorso del file CSV da scrivere
-    print("Inizio scrittura su CSV...")
+    # Path to the CSV file to write
+    print("Start of CSV writing...")
     with open(csv_path, mode='w', newline='') as csv_file:
         writer = csv.writer(csv_file, delimiter=';')
         writer.writerow(['Column1.name', 'Column2.symbol', 'Column3.id', 'Column4.price_usd'])
