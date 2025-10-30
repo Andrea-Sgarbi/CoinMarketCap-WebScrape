@@ -5,6 +5,7 @@ import sys
 from selenium.webdriver import Chrome
 from selenium.webdriver import ChromeOptions
 from selenium.webdriver.chrome.service import Service
+# Use Selenium Manager (Selenium >= 4.10) to auto-download and manage ChromeDriver; no external webdriver_manager needed
 
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -45,7 +46,7 @@ def url_data(url):
 
     options = ChromeOptions()
     options.add_argument("--headless=new")
-    service = Service(executable_path='/usr/local/bin/chromedriver')
+    service = Service()  # rely on Selenium Manager (if available) to resolve chromedriver
     driver = Chrome(service=service, options=options)
     driver.get(url[0])
     delay = 3
@@ -61,6 +62,8 @@ def url_data(url):
     except TimeoutException:
         print(f"Loading took too much time for page {url[3]}!")
         price = '0.0'
+    finally:
+        driver.quit()
 
     return price
 

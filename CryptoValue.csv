@@ -1,16 +1,18 @@
 Column1.name;Column2.symbol;Column3.id;Column4.price_usd
-Bitcoin;BTC;bitcoin;97687,00000000
-Ethereum;ETH;ethereum;3684,51000000
-Tether;USDT;tether;0,85870000
-Polkadot;DOT;polkadot-new;3,31000000
-XRP;XRP;xrp;2,49000000
-Binance Coin;BNB;bnb;739,23000000
-Chainlink;LINK;chainlink;21,99000000
-USD Coin;USDC;usd-coin;0,85870000
-Crypto.com Coin;CRO;cronos;0,12320000
-Solana;SOL;solana;160,14000000
-Avalanche;AVAX;avalanche;19,99000000
-Young Platform;YNG;young;0,37190000
-Optimism;OP;optimism-ethereum;0,61730000
-Efinity Token;EFI;efinity;0,04011000
-Arbitrum;ARB;arbitrum;0,43330000
+Bitcoin;BTC;bitcoin;92959,68000000
+Ethereum;ETH;ethereum;3241,32000000
+Tether;USDT;tether;0,86430000
+Polkadot;DOT;polkadot-new;2,45000000
+XRP;XRP;xrp;2,09000000
+Binance Coin;BNB;bnb;918,94000000
+Chainlink;LINK;chainlink;14,45000000
+USD Coin;USDC;usd-coin;0,86440000
+Crypto.com Coin;CRO;cronos;0,12330000
+Solana;SOL;solana;157,34000000
+Avalanche;AVAX;avalanche;15,48000000
+Young Platform;YNG;young;0,70650000
+Optimism;OP;optimism-ethereum;0,34040000
+Efinity Token;EFI;efinity;0,04037000
+Arbitrum;ARB;arbitrum;0,24690000
+Cardano;ADA;cardano;0,51440000
+TRON;TRX;tron;0,25030000
