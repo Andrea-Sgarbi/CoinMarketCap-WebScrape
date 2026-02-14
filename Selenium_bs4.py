@@ -18,8 +18,7 @@ from bs4 import BeautifulSoup
 
 
 # Constants
-DIV_CLASS = 'sc-65e7f566-0 WXGwg base-text'
-
+DIV_CLASS = 'sc-c1554bc0-0 RbQXx base-text'
 
 # Read CSV file and convert to list
 def csv_to_list(csv_path):
